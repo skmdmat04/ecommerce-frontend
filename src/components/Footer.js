@@ -13,11 +13,11 @@ const FooterContainer = styled.footer`
 `;
 
 const Footer = () => {
-  return (
-    <FooterContainer>
-      <p>&copy; 2023 ShopMate</p>
-    </FooterContainer>
-  );
+    return (
+        <FooterContainer>
+            <p>&copy; 2024 ShopMate</p>
+        </FooterContainer>
+    );
 };
 
 export default Footer;
