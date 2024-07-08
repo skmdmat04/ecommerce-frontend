@@ -1,4 +1,3 @@
-// src/components/Shop.js
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import Filter from './Filter';
@@ -24,19 +23,20 @@ const Shop = () => {
         }
     };
 
+    const fetchSearchResults = async () => {
+        try {
+            const data = await searchProducts(searchTerm);
+            setProducts(data.data);
+        } catch (error) {
+            setError('Error fetching search results');
+        }
+    };
+
     useEffect(() => {
         fetchProducts(filters);
     }, [filters]);
 
     useEffect(() => {
-        const fetchSearchResults = async () => {
-            try {
-                const data = await searchProducts(searchTerm);
-                setProducts(data.data);
-            } catch (error) {
-                setError('Error fetching search results');
-            }
-        };
 
         if (searchTerm) {
             fetchSearchResults();
@@ -49,19 +49,13 @@ const Shop = () => {
         setFilters(newFilters);
     };
 
-    if (loading) {
-        return <p>Loading products...</p>;
-    }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
 
     return (
         <div>
             <SearchBar setSearchTerm={setSearchTerm} />
             <Filter filters={filters} setFilters={handleFilterChange} />
-            <ProductList products={products} />
+            {loading ? <p className="fetch">Loading products...</p> : error ? <p className="fetch">{error}</p> : <ProductList products={products} />}
+            {/* <ProductList products={products} /> */}
         </div>
     );
 };
