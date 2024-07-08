@@ -7,7 +7,8 @@ const FooterContainer = styled.footer`
   color: #e9c46a; /* Updated color */
   padding: 1rem;
   text-align: center;
-  position: fixed;
+  ${'' /* position: fixed; */}
+  margin-top:20px;
   bottom: 0;
   width: 100%;
 `;
