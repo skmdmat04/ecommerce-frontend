@@ -8,7 +8,7 @@ import { Container } from './components/StyledComponents';
 const App = () => {
   return (
     <Container>
-    <h1>hellow fro main</h1>
+    <h1>hello fro main</h1>
       <Header />
       <Shop />
       <Footer />
